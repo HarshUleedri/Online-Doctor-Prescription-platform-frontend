@@ -1,4 +1,3 @@
-import useUserdata from "@/hooks/useUserdata";
 import { create } from "zustand";
 
 interface AuthState {
