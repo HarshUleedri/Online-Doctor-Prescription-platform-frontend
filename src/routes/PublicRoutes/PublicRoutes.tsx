@@ -2,8 +2,8 @@ import PublicLayout from "@/Layout/PublicLayout";
 import DoctorLogin from "@/pages/DoctorLogin/DoctorLogin";
 import DoctorSignup from "@/pages/DoctorSignup/DoctorSignup";
 import Home from "@/pages/Home/Home";
-import Login from "@/pages/Login/Login";
-import Signup from "@/pages/Signup/Signup";
+import PatientLogin from "@/pages/PatientSignin/PatientSignin";
+import PatientSignup from "@/pages/PatientSignup/PatientSignup";
 
 export const PublicRoutes = [
   {
@@ -18,19 +18,19 @@ export const PublicRoutes = [
     ],
   },
   {
-    path: "/login",
-    element: <Login />,
+    path: "/patient/signin",
+    element: <PatientLogin />,
   },
   {
-    path: "/signup",
-    element: <Signup />,
+    path: "/patient/signup",
+    element: <PatientSignup />,
   },
   {
-    path: "/doctor-login",
+    path: "/doctor/signin",
     element: <DoctorLogin />,
   },
   {
-    path: "/doctor-signup",
+    path: "/doctor/signup",
     element: <DoctorSignup />,
   },
 ];
