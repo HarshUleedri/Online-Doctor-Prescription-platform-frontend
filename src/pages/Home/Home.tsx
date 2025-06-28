@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 
-import { Search, Stethoscope, Users } from "lucide-react";
+import { Search, Stethoscope } from "lucide-react";
 
 const Home = () => {
   return (
