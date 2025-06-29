@@ -1,5 +1,5 @@
 import PublicLayout from "@/Layout/PublicLayout";
-import DoctorLogin from "@/pages/DoctorLogin/DoctorLogin";
+import DoctorLogin from "@/pages/DoctorSignin/DoctorSignin";
 import DoctorSignup from "@/pages/DoctorSignup/DoctorSignup";
 import Home from "@/pages/Home/Home";
 import PatientLogin from "@/pages/PatientSignin/PatientSignin";

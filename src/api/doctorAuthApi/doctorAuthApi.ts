@@ -42,10 +42,11 @@ export const doctorLogoutApi = async () => {
 
 export const getDoctorData = async () => {
   try {
-    const res = await axiosInstance.get("/patient/me");
+    const res = await axiosInstance.get("/doctor/me");
     return res.data;
   } catch (error) {
     console.log("Error at login api ", error);
+    throw error;
     return null; // Return null instead of throwing an error
   }
 };

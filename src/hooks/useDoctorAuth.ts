@@ -1,23 +1,18 @@
-import { axiosInstance } from "@/api/apiConfig";
-import { loginApi, logoutApi } from "@/api/authApi/authApi";
-import { doctorSignUpApi } from "@/api/doctorAuthApi/doctorAuthApi";
+import {
+  doctorLoginApi,
+  doctorLogoutApi,
+  doctorSignUpApi,
+  getDoctorData,
+} from "@/api/doctorAuthApi/doctorAuthApi";
 import { useAuthStore } from "@/store/useAuthStore";
 import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router";
 
-const fetchDoctor = async () => {
-  try {
-    const res = await axiosInstance.get("/patient/me");
-    const data = res.data;
-    return data.patient;
-  } catch (error) {
-    console.log("Error fetching user data: ", error);
-    return null; // Return null instead of throwing an error
-  }
-};
-
-const usePatientAuth = () => {
-  const { login, logout } = useAuthStore((state) => state);
-
+const useDoctorAuth = () => {
+  const { login, logout, setIsError, setIsLoading } = useAuthStore(
+    (state) => state
+  );
+  const navigate = useNavigate();
   const {
     mutate: DoctorSignupMutate,
     isPending: DoctorSignupIsPending,
@@ -33,30 +28,32 @@ const usePatientAuth = () => {
       experience: number;
     }) => doctorSignUpApi(data),
 
-    onSuccess: () => {
-      const doctorData = fetchDoctor();
-      if (doctorData) {
-        login(doctorData);
-      } else {
-        console.error("Failed to fetch user data after login.");
-        logout(); // Ensure logout if user data is not fetched
-      }
-    },
+    onSuccess: () => {},
   });
 
+  //login
   const {
     mutate: DoctorLoginMutate,
     isPending: DoctorLoginIsPending,
     error: DoctorLoginError,
   } = useMutation({
-    mutationFn: (data: { email: string; password: string }) => loginApi(data),
-    onSuccess: () => {
-      const doctorData = fetchDoctor();
-      if (doctorData) {
-        login(doctorData);
-      } else {
-        console.error("Failed to fetch user data after login.");
-        logout(); // Ensure logout if user data is not fetched
+    mutationFn: (data: { email: string; password: string }) =>
+      doctorLoginApi(data),
+    onSuccess: async (response) => {
+      try {
+        console.log(response);
+        setIsLoading(true);
+        const res = await getDoctorData();
+        // const data = await res.data;
+        console.log(res);
+        // login(data.doctor);
+        navigate("/");
+      } catch (error) {
+        setIsLoading(false);
+        console.log(error);
+        setIsError(error.response.data.message as string);
+      } finally {
+        setIsLoading(false);
       }
     },
   });
@@ -66,7 +63,7 @@ const usePatientAuth = () => {
     isPending: DoctorLogoutIsPending,
     error: DoctorLogoutErrors,
   } = useMutation({
-    mutationFn: () => logoutApi(),
+    mutationFn: () => doctorLogoutApi(),
     onSuccess: () => {
       logout(); // Clear user data from the store
     },
@@ -85,4 +82,4 @@ const usePatientAuth = () => {
   };
 };
 
-export default usePatientAuth;
+export default useDoctorAuth;
