@@ -1,17 +1,22 @@
+import DoctorDashboard from "@/pages/Dashboard/DoctorDashboard/DoctorDashboard";
+import PatientDashboard from "@/pages/Dashboard/PatientDashboard/PatientDashboard";
 import { useAuthStore } from "@/store/useAuthStore";
-import { Navigate, Outlet } from "react-router";
+import { Navigate } from "react-router";
 
 const ProtectedLayout = () => {
-  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+  const { isAuthenticated, user } = useAuthStore((state) => state);
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" replace={true} />;
+    return <Navigate to="/" replace={true} />;
   }
-  return (
-    <>
-      <Outlet />
-    </>
-  );
+  if (isAuthenticated && user.role === "doctor") {
+    console.log(user);
+    return <DoctorDashboard />;
+  }
+  if (isAuthenticated && user.role === "patient") {
+    console.log(user);
+    return <PatientDashboard />;
+  }
 };
 
 export default ProtectedLayout;

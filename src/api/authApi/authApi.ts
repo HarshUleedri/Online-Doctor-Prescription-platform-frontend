@@ -1,3 +1,4 @@
+import type { PatientSignUpDataType } from "@/types/UserTypes";
 import { axiosInstance } from "../apiConfig";
 
 export const loginApi = async (data: { email: string; password: string }) => {
@@ -9,16 +10,7 @@ export const loginApi = async (data: { email: string; password: string }) => {
     throw error;
   }
 };
-export const signUpApi = async (data: {
-  name: string;
-  profilePic: string;
-  age: number;
-  email: string;
-  phone: string;
-  password: string;
-  historyOfSurgery?: string[];
-  historyOfIllness?: string[];
-}) => {
+export const signUpApi = async (data: PatientSignUpDataType) => {
   try {
     const res = await axiosInstance.post("/patient/signup", data);
     return res.data;
@@ -45,5 +37,14 @@ export const getUserData = async () => {
   } catch (error) {
     console.log("Error at login api ", error);
     return null;
+  }
+};
+
+export const uploadProfileImageApi = async (data: FormData) => {
+  try {
+    const res = await axiosInstance.post("/upload/patient-image", data);
+    return res.data;
+  } catch (error) {
+    console.log(error);
   }
 };

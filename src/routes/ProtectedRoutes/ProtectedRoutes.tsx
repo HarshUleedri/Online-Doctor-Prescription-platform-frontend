@@ -2,13 +2,13 @@ import ProtectedLayout from "@/Layout/ProtectedLayout";
 
 export const ProtectedRoutes = [
   {
-    path: "/doctor/dashboard",
+    path: "/dashboard",
     element: <ProtectedLayout />,
     children: [
       {
         index: true,
         path: "",
-        element: <div>Doctor Dashboard</div>,
+        element: <div> Dashboard</div>,
       },
     ],
   },
