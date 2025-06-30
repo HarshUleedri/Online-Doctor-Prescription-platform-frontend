@@ -50,7 +50,7 @@ const PatientSignup = () => {
       const formData = new FormData();
       formData.append("image", file);
       const data = await uploadMutate(formData);
-      setFormData((prev) => ({ ...prev, profilePic: data.url }));
+      setFormData((prev) => ({ ...prev, profilePic: data?.url }));
     }
   };
 

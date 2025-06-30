@@ -78,7 +78,7 @@ const DoctorSignup = () => {
       formData.append("image", file);
       try {
         const data = await uploadMutate(formData);
-        setFormData((prev) => ({ ...prev, profilePic: data.url }));
+        setFormData((prev) => ({ ...prev, profilePic: data?.url }));
       } catch (error) {
         console.log(error);
       }
