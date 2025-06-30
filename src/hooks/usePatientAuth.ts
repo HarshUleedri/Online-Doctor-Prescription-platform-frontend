@@ -23,7 +23,6 @@ const usePatientAuth = () => {
     error: signupError,
   } = useMutation({
     mutationFn: (data: PatientSignUpDataType) => signUpApi(data),
-
     onSuccess: async () => {
       try {
         setIsLoading(true);

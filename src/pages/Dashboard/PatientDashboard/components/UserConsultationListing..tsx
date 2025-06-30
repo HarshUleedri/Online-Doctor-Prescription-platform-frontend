@@ -10,9 +10,7 @@ const UserConsultationListing = () => {
 
   const userConsultationData: userConsultationDataType[] = data?.consultations;
 
-  console.log(userConsultationData);
-
-  if (userConsultationData.length === 0) {
+  if (userConsultationData?.length === 0) {
     return (
       <div className="text-xl font-semibold mt-12">
         You Have No Consultation
