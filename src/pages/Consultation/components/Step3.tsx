@@ -22,16 +22,12 @@ interface Step3 {
   errors: Partial<ConsultationFormErrorType>;
 }
 
-const Step3 = ({ data, handleChange, handleNestedChange, errors }: Step3) => {
+const Step3 = ({ data, handleChange, errors }: Step3) => {
   const { id } = useParams();
 
   const doctorId = id || "";
 
-  const {
-    data: doctorInfo,
-    isLoading,
-    isError,
-  } = useSingleDoctorData(doctorId);
+  const { data: doctorInfo } = useSingleDoctorData(doctorId);
 
   const doctorData: DoctorDataType = doctorInfo?.doctor;
 

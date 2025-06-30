@@ -1,11 +1,10 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { useUserConsultation } from "@/hooks/useConsultationQueries";
-import { useAuthStore } from "@/store/useAuthStore";
+// import { useAuthStore } from "@/store/useAuthStore";
 import type { userConsultationDataType } from "@/types/type";
-import React from "react";
 
 const UserConsultationListing = () => {
-  const { user } = useAuthStore((state) => state);
+  // const { user } = useAuthStore((state) => state);
 
   const { data } = useUserConsultation();
 

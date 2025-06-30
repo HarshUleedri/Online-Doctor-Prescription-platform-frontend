@@ -69,7 +69,12 @@ const PatientLogin = () => {
           </Label>
           {loginError && (
             <p className="text-sm text-destructive font-semibold">
-              {loginError.response.data.message}
+              {
+                // Try to get a message from the error response, otherwise fallback to a generic message
+                (loginError as any)?.response?.data?.message ||
+                loginError.message ||
+                "An error occurred"
+              }
             </p>
           )}
           {isError && (

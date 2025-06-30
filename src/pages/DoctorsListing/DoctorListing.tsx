@@ -1,18 +1,10 @@
 import DoctorCard from "@/components/common/DoctorCard";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAllDoctorData } from "@/hooks/useDoctorQueries";
 import type { DoctorDataType } from "@/types/UserTypes";
-import { Clock } from "lucide-react";
 
 const DoctorListing = () => {
-  const { data, isError, isLoading } = useAllDoctorData();
+  const { data, isLoading } = useAllDoctorData();
 
   const doctors: DoctorDataType[] = data?.doctors;
   if (isLoading)

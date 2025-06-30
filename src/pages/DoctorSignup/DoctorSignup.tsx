@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import useDoctorAuth from "@/hooks/useDoctorAuth";
 import { useAuthStore } from "@/store/useAuthStore";
-import type { DoctorSignUpData, DoctorSignUpDataType } from "@/types/UserTypes";
+import type { DoctorSignUpDataType } from "@/types/UserTypes";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -235,7 +235,12 @@ const DoctorSignup = () => {
           </Label>
           {(DoctorSignupError || isError) && (
             <p className="text-sm text-destructive font-medium">
-              {DoctorSignupError?.response.data.message || isError}
+              {typeof DoctorSignupError === "object" &&
+              DoctorSignupError !== null &&
+              "response" in DoctorSignupError
+                ? // @ts-expect-error: DoctorSignupError may not have a response property, but we want to access it if present
+                  DoctorSignupError.response?.data?.message
+                : DoctorSignupError?.message || isError}
             </p>
           )}
         </CardContent>

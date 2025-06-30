@@ -4,7 +4,7 @@ import {
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
 import { Button } from "../ui/button";
-import { ChevronDown, MoonIcon } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { Link, useNavigate } from "react-router";
 import { useAuthStore } from "@/store/useAuthStore";
 import useDoctorAuth from "@/hooks/useDoctorAuth";

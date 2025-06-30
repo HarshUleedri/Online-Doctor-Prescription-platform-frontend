@@ -33,7 +33,21 @@ const usePatientAuth = () => {
       } catch (error) {
         setIsLoading(false);
         console.log(error);
-        setIsError(error.response.data.message as string);
+        if (
+          typeof error === "object" &&
+          error !== null &&
+          "response" in error &&
+          typeof (error as any).response === "object" &&
+          (error as any).response !== null &&
+          "data" in (error as any).response &&
+          typeof (error as any).response.data === "object" &&
+          (error as any).response.data !== null &&
+          "message" in (error as any).response.data
+        ) {
+          setIsError((error as any).response.data.message as string);
+        } else {
+          setIsError("An unknown error occurred");
+        }
       } finally {
         setIsLoading(false);
       }
@@ -55,7 +69,21 @@ const usePatientAuth = () => {
       } catch (error) {
         setIsLoading(false);
         console.log(error);
-        setIsError(error.response.data.message as string);
+        if (
+          typeof error === "object" &&
+          error !== null &&
+          "response" in error &&
+          typeof (error as any).response === "object" &&
+          (error as any).response !== null &&
+          "data" in (error as any).response &&
+          typeof (error as any).response.data === "object" &&
+          (error as any).response.data !== null &&
+          "message" in (error as any).response.data
+        ) {
+          setIsError((error as any).response.data.message as string);
+        } else {
+          setIsError("An unknown error occurred");
+        }
       } finally {
         setIsLoading(false);
       }

@@ -75,7 +75,12 @@ const DoctorLogin = () => {
           </Label>
           {DoctorLoginError && (
             <p className="text-sm text-destructive font-semibold">
-              {DoctorLoginError.response.data.message}
+              {
+                // Try to get the error message from response, otherwise fallback to message or string
+                (DoctorLoginError as any)?.response?.data?.message ||
+                  DoctorLoginError.message ||
+                  "An error occurred"
+              }
             </p>
           )}
           {isError && (

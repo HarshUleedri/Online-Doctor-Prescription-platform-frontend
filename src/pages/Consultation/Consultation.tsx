@@ -49,7 +49,7 @@ const Consultation = () => {
 
   const { isAuthenticated, user } = useAuthStore((state) => state);
 
-  const { mutateAsync, error, isPending, isSuccess } = useCreateConsultation();
+  const { mutateAsync, error, isPending } = useCreateConsultation();
 
   console.log(error);
 
