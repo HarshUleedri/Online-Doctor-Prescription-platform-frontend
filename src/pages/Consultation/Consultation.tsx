@@ -72,7 +72,7 @@ const Consultation = () => {
     setFormData((prev) => ({
       ...prev,
       [parent]: {
-        ...prev[parent],
+        ...(typeof prev[parent] === "object" && prev[parent] !== null ? prev[parent] : {}),
         [field]: value,
       },
     }));
@@ -256,7 +256,12 @@ const Consultation = () => {
         {/* navigation */}
         <CardFooter className="flex justify-end gap-8 items-center ">
           {error && (
-            <p className="text-destructive">{error.response.data.message}</p>
+            <p className="text-destructive">
+              {
+                // Try to access error.response.data.message if it exists, otherwise fallback to error.message
+                (error as any)?.response?.data?.message || error.message || "An error occurred"
+              }
+            </p>
           )}
           <Button
             onClick={previous}

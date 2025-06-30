@@ -200,7 +200,9 @@ const PatientSignup = () => {
           </Label>
           {(signupError || isError) && (
             <p className="text-sm text-destructive font-medium">
-              {signupError?.response.data.message || isError}
+              {(signupError && (signupError as any)?.response?.data?.message) ||
+                signupError?.message ||
+                isError}
             </p>
           )}
         </CardContent>
