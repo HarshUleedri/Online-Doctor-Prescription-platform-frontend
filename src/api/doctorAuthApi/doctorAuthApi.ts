@@ -52,3 +52,24 @@ export const uploadDoctorImageApi = async (data: FormData) => {
     console.log(error);
   }
 };
+
+export const getAllDoctor = async () => {
+  try {
+    const res = await axiosInstance.get("/doctor");
+    return res.data;
+  } catch (error) {
+    console.log("Error at login api ", error);
+    throw error;
+    // return null; // Return null instead of throwing an error
+  }
+};
+
+export const getSingleDoctor = async (id: string) => {
+  try {
+    const res = await axiosInstance.get(`/doctor/single/${id}`);
+    return res.data;
+  } catch (error) {
+    console.log("Error at get single doctor api ", error);
+    // return null; // Return null instead of throwing an error
+  }
+};

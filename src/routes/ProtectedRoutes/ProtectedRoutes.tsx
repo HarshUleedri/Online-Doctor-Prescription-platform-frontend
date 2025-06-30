@@ -1,15 +1,13 @@
 import ProtectedLayout from "@/Layout/ProtectedLayout";
+import Consultation from "@/pages/Consultation/Consultation";
 
 export const ProtectedRoutes = [
   {
     path: "/dashboard",
     element: <ProtectedLayout />,
-    children: [
-      {
-        index: true,
-        path: "",
-        element: <div> Dashboard</div>,
-      },
-    ],
+  },
+  {
+    path: "/consult/:id",
+    element: <Consultation />,
   },
 ];

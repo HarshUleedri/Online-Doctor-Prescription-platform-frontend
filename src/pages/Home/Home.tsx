@@ -1,13 +1,8 @@
-import { getDoctorData } from "@/api/doctorAuthApi/doctorAuthApi";
 import { Button } from "@/components/ui/button";
 
 import { Search, Stethoscope } from "lucide-react";
 
 const Home = () => {
-  const handleTest = async () => {
-    const res = await getDoctorData();
-    console.log(res);
-  };
   return (
     <div className="mx-auto container px-4 lg:px-20  py-8 min-h-screen">
       <section className="flex items-center gap-8 ">
@@ -66,7 +61,6 @@ const Home = () => {
           />
         </div>
       </section>
-      <Button onClick={handleTest}>call</Button>
     </div>
   );
 };

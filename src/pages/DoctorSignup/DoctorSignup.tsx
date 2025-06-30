@@ -56,6 +56,7 @@ const DoctorSignup = () => {
   const {
     uploadMutate,
     uploadIsPending,
+    uploadIsError,
     DoctorSignupMutate,
     DoctorSignupError,
     DoctorSignupIsPending,
@@ -75,8 +76,12 @@ const DoctorSignup = () => {
     if (file) {
       const formData = new FormData();
       formData.append("image", file);
-      const data = await uploadMutate(formData);
-      setFormData((prev) => ({ ...prev, profilePic: data.url }));
+      try {
+        const data = await uploadMutate(formData);
+        setFormData((prev) => ({ ...prev, profilePic: data.url }));
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -119,6 +124,9 @@ const DoctorSignup = () => {
                 <div className="size-20 rounded-md hover:bg-accent flex items-center justify-center">
                   <User2 className="text-muted-foreground/50 " />
                 </div>
+              )}
+              {uploadIsError && (
+                <p className="text-destructive text-sm">Something went Wrong</p>
               )}
             </Label>
           </div>

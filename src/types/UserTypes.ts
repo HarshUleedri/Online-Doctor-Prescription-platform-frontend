@@ -18,3 +18,19 @@ export interface PatientSignUpDataType {
   historyOfSurgery?: string[];
   historyOfIllness?: string[];
 }
+export interface DoctorDataType {
+  _id: string;
+  name: string;
+  email: string;
+  password: string;
+  phone: string;
+  profilePic: string;
+  specialty: string;
+  upiId: string;
+  consultancyAmount: number;
+  experience: number;
+  role: "doctor";
+  createdAt: string; // or Date
+  updatedAt: string; // or Date
+  __v: number;
+}
