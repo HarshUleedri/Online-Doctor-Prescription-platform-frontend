@@ -29,9 +29,15 @@ const Navbar = () => {
             MediConnect
           </Link>
         </div>
-        <div>
+        <div className="space-x-4">
           <Link className="font-semibold" to={"/doctors"}>
             Doctor
+          </Link>
+          <Link className="font-semibold" to={"/about-us"}>
+            About Us
+          </Link>
+          <Link className="font-semibold" to={"/contact-us"}>
+            Contact Us
           </Link>
         </div>
 
@@ -78,9 +84,9 @@ const Navbar = () => {
               </div>
             )}
           </div>
-          <Button variant="outline" size={"icon"} className="">
+          {/* <Button variant="outline" size={"icon"} className="">
             <MoonIcon />
-          </Button>
+          </Button> */}
         </div>
       </nav>
     </header>

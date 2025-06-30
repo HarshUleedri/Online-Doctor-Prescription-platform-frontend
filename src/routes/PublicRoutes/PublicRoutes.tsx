@@ -1,4 +1,5 @@
 import PublicLayout from "@/Layout/PublicLayout";
+import ComingSoon from "@/pages/Dashboard/PatientDashboard/components/ComingSoon";
 import DoctorLogin from "@/pages/DoctorSignin/DoctorSignin";
 import DoctorSignup from "@/pages/DoctorSignup/DoctorSignup";
 import DoctorListing from "@/pages/DoctorsListing/DoctorListing";
@@ -19,6 +20,14 @@ export const PublicRoutes = [
       {
         path: "/doctors",
         element: <DoctorListing />,
+      },
+      {
+        path: "/about-us",
+        element: <ComingSoon />,
+      },
+      {
+        path: "/contact-us",
+        element: <ComingSoon />,
       },
     ],
   },
