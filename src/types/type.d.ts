@@ -29,6 +29,7 @@ export interface userConsultationDataType {
   doctorId: {
     name: string;
     specialty: string;
+    profilePic: string;
   };
   currentIllnessHistory: string;
   recentSurgery: {
@@ -40,7 +41,7 @@ export interface userConsultationDataType {
     allergies: string;
     others: string;
   };
-  status: "pending" | "approved" | "rejected"; // extend as needed
+  status: "pending" | "completed" | "cancelled"; // extend as needed
   transactionId: string;
   createdAt: string; // ISO date string
   updatedAt: string;
