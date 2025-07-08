@@ -54,6 +54,7 @@ const UserConsultationListing = () => {
             <TableBody>
               {userConsultationData?.map((consultation) => (
                 <ConsultationDataColumn
+                  key={consultation._id}
                   setViewConsultation={setViewConsultation}
                   setSingleConsultationData={setSingleConsultationData}
                   consultation={consultation}

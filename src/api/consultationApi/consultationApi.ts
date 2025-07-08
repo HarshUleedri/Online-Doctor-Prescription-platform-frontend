@@ -20,3 +20,23 @@ export const getUserConsultation = async () => {
     // return null; // Return null instead of throwing an error
   }
 };
+export const getDoctorConsultation = async () => {
+  try {
+    const res = await axiosInstance.get(`/consultations/doctor`);
+    return res.data;
+  } catch (error) {
+    console.log("Error at login api ", error);
+    throw error;
+    // return null; // Return null instead of throwing an error
+  }
+};
+export const getSingleConsultation = async (id: string) => {
+  try {
+    const res = await axiosInstance.get(`/consultations/single/${id}`);
+    return res.data;
+  } catch (error) {
+    console.log("Error at login api ", error);
+    throw error;
+    // return null; // Return null instead of throwing an error
+  }
+};

@@ -4,6 +4,7 @@ import { useState } from "react";
 import UserConsultationListing from "./components/UserConsultationListing.";
 import ComingSoon from "./components/ComingSoon";
 import { Link } from "react-router";
+import PatientPrescriptionListing from "./components/PatientPrescriptionListing";
 const navTab = [
   { number: 1, title: "Consultation", icon: Brain },
   { number: 2, title: "Prescription", icon: ClipboardPlus },
@@ -12,11 +13,11 @@ const navTab = [
 ];
 
 const PatientDashboard = () => {
-  const { user } = useAuthStore((state) => state);
-
-  console.log(user.name);
-
+  // state
   const [isActive, setIsActive] = useState<number>(1);
+
+  //hooks
+  const { user } = useAuthStore((state) => state);
 
   return (
     <div className="min-h-screen  ">
@@ -71,7 +72,7 @@ const PatientDashboard = () => {
           </h2>
 
           {isActive === 1 && <UserConsultationListing />}
-          {isActive === 2 && <ComingSoon />}
+          {isActive === 2 && <PatientPrescriptionListing />}
           {isActive === 3 && <ComingSoon />}
           {isActive === 4 && <ComingSoon />}
         </main>

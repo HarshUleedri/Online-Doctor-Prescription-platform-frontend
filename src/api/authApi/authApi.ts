@@ -13,7 +13,7 @@ export const loginApi = async (data: { email: string; password: string }) => {
 export const signUpApi = async (data: PatientSignUpDataType) => {
   try {
     const res = await axiosInstance.post("/patient/signup", data);
-    return res.data;
+return res.data;
   } catch (error) {
     console.log("Error at login api ", error);
     throw error;

@@ -44,6 +44,7 @@ const Navbar = () => {
         <div className="flex gap-4">
           <div>
             {!isAuthenticated ? (
+              // login button
               <div className="flex items-center gap-4  ">
                 <DropdownMenu>
                   <DropdownMenuTrigger>

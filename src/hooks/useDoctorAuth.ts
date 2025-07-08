@@ -29,7 +29,7 @@ const useDoctorAuth = () => {
         setIsLoading(true);
         const res = await getDoctorData();
         login(res.doctor);
-        navigate("/dashboard", { replace: true });
+        navigate("/dashboard/patients", { replace: true });
       } catch (error) {
         setIsLoading(false);
         console.log(error);
@@ -67,7 +67,7 @@ const useDoctorAuth = () => {
         setIsLoading(true);
         const res = await getDoctorData();
         login(res.doctor);
-        navigate("/dashboard", { replace: true });
+        navigate("/dashboard/patients", { replace: true });
       } catch (error) {
         setIsLoading(false);
         console.log(error);

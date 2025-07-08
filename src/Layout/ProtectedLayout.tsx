@@ -10,11 +10,9 @@ const ProtectedLayout = () => {
     return <Navigate to="/" replace={true} />;
   }
   if (isAuthenticated && user.role === "doctor") {
-    console.log(user);
     return <DoctorDashboard />;
   }
   if (isAuthenticated && user.role === "patient") {
-    console.log(user);
     return <PatientDashboard />;
   }
 };

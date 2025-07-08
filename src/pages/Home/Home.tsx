@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 
 import { Calendar, Search, Stethoscope, Users } from "lucide-react";
@@ -5,6 +6,18 @@ import { useNavigate } from "react-router";
 
 const Home = () => {
   const navigate = useNavigate();
+
+  // const [data, setData] = useState();
+
+  // const handtest = async () => {
+  //   try {
+  //     const res = await axiosInstance.get("/doctor/consultations");
+  //     const data = res.data;
+  //     setData(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   return (
     <div className="mx-auto container px-4 lg:px-20  py-8 min-h-screen">
       <section className="flex items-center gap-8 mb-26 ">
@@ -67,6 +80,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* <Button onClick={handtest}>call</Button>
+      {JSON.stringify(data)} */}
     </div>
   );
 };
