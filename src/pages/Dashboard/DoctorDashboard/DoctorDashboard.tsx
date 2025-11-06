@@ -38,9 +38,10 @@ const DoctorDashboard = () => {
                 <img
                   className="size-full rounded-full"
                   src={
-                    "https://ik.imagekit.io/harshdev/Doctor/ProfileImage/beachhousefullmoonscenerydigitalart6542bthumbjpg_UI0Idb9Ru.png"
+                    user?.profilePic ||
+                    "https://placehold.co/100x100?text=image"
                   }
-                  alt=""
+                  alt="profile-image"
                 />
               </div>
               <p className="text-lg font-medium">{user.name}</p>
